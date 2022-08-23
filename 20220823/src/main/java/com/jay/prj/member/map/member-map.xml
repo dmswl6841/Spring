@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jay.prj.member.map.MemberMapper"> <!-- 마지막에 파일 이름을 mapper interface명으로 적는다. -->
+	<select id="memberSelectList" resultType="com.jay.prj.member.vo.MemberVO"> <!-- id는 interface의 메소드 이름과 동일하게 쓴다. -->
+		SELECT * FROM MEMBER
+	</select>
+	<select id="memberSelect" parameterType="com.jay.prj.member.vo.MemberVO" 
+			resultType="com.jay.prj.member.vo.MemberVO">
+		SELECT * FROM MEMBER WHERE MEMBER_ID = #{MEMBER_ID}
+		<!-- MEMBER_ID는 DB의 필드명, #{MEMBER_ID} JAVA의 VO객체. EL태그로 써야한다. -->
+	</select>
+	<insert id="memberInsert" parameterType="com.jay.prj.member.vo.MemberVO">
+		INSERT INTO MEMBER 
+		VALUES (#{MEMBER_ID}, #{MEMBER_PASSWORD}, #{MEMBER_NAME}, 'USER')
+		<!-- member_author은 default가 user이기때문에 user로 적었음. -->
+	</insert>
+	<update id="memberUpdate" parameterType="com.jay.prj.member.vo.MemberVO">
+		UPDATE MEMBER
+		SET MEMBER_PASSWORD = #{MEMBER_PASSWORD}, MEMBER_NAME = #{MEMBER_NAME},
+			MEMBER_AUTHOR = #{MEMBER_AUTHOR}
+		WHERE MEMBER_ID = #{MEMBER_ID}
+	</update>
+	<delete id="memberDelete" parameterType="com.jay.prj.member.vo.MemberVO">
+		DELETE FROM MEMBER
+		WHERE MEMBER_ID = #{MEMBER_ID}
+	</delete>
+</mapper>

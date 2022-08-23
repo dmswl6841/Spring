@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+ 	<settings>
+ 		<setting name="jdbcTypeForNull" value="NULL"/>
+		<!-- mybatis mapper가 null을 인식하지 못하기때문에 빈 값을 NULL로 지정해줘야함 -->
+ 	</settings>
+ </configuration>
+ 

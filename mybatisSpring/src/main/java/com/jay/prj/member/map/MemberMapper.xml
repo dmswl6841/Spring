@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jay.prj.member.map.MemberMapper">
+	<select id="memberSelectList" resultType="com.jay.prj.member.vo.MemberVO">
+		SELECT * FROM MEMBER
+	</select>
+	<select id="memberSelect" parameterType="com.jay.prj.member.vo.MemberVO" resultType="com.jay.prj.member.vo.MemberVO">
+		SELECT * FROM MEMEBER WHERE MEMBER_ID = #{MEMBER_ID}
+	</select>
+	<insert id="memberInsert" parameterType="com.jay.prj.member.vo.MemberVO">
+		insert into member
+		value(member_id = #{member_id}, member_password = #{member_password}, member_name = #{member_name})
+	</insert>
+	<update id="memberUpdate">
+	
+	</update>
+	<delete id="memberDelete">
+	
+	</delete>
+</mapper>
