@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jay.prj.notice.map.NoticeMapper">
+	<select id="noticeSelectList" resultType="com.jay.prj.notice.vo.NoticeVO">
+		SELECT * FROM NOTICE
+	</select>
+	<select id="noticeSelect" parameterType="com.jay.prj.notice.vo.NoticeVO" resultType="com.jay.prj.notice.vo.NoticeVO">
+		SELECT * FROM NOTICE WHERE NOTICE_ID = #{NOTICE_ID}
+	</select>
+	<insert id="noticeInsert" parameterType="com.jay.prj.notice.vo.NoticeVO">
+		insert into notice
+		values (n_seq.nextval, #{notice_writer}, #{notice_title}, #{notice_subject}, #{notice_date}, 0,
+				#{notice_attech}, #{notice_attech_dir})
+	</insert>
+	<update id="noticeUpdate" parameterType="com.jay.prj.notice.vo.NoticeVO">
+	
+	</update>
+	<delete id="noticeDelete" parameterType="com.jay.prj.notice.vo.NoticeVO">
+	
+	</delete>
+</mapper>
