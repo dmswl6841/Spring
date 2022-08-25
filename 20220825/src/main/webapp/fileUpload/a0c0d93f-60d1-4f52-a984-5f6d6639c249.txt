@@ -1,0 +1,30 @@
+JQuery 함수
+
+css("속성", "값") => 속성을 값으로 지정
+css("속성") => 속성 값을 찾음
+
+ex)
+css("backgroundColor", "red") => 배경색을 빨강으로 지정
+css("backgroundColor") = red 출력
+
+태그
+$("<div>") => 태그 생성 (= createElement("div") )
+$("div") => div 태그 찾음
+
+---------------------------------------
+append
+
+append() 먼저 입력한게 앞으로 -> 1,2,3,4
+prepand() 마지막에 입력한게 앞으로 -> 4,3,2,1
+before() -> $(A).before$(B) -> B,A
+after() -> $(A).before$(B) -> A,B
+
+$(부모태그).append($(자식태그)) => 부모태그 안에 자식태그를 추가한다
+$(자식태그).prepend(부모태그) => 자식태그를 부모태그에 추가한다
+
+$("#basket").append($("#apple"))
+$("#apple").appendTo("#basket")
+결과는 같다.
+
+clone() -> 같은값 입력
+

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jay.prj.notice.map.NoticeMapper">
+	<select id="noticeSelect" resultType="com.jay.prj.notice.service.NoticeVO">
+		<!-- select notice_id as noticeId,
+				notice_writer as noticeWriter,
+				notice_title as noticeTilte,
+				notice_subject as noticeSubject,
+				notice_date as noticeDate,
+				notice_hit as noticeHit,
+				notice_attech as noticeAttech,
+				notice_attech_dir as noticeAttechDir
+		from notice
+		where notice_id = #{noticeId} -->
+		
+		select notice_id,
+				notice_writer,
+				notice_title,
+				notice_subject,
+				notice_date,
+				notice_hit,
+				notice_attech,
+				notice_attech_dir
+		from notice
+		where notice_id = #{noticeId}
+		<!-- 너무 많음 all로 쓰고 싶으면 mapping  해주면 된다. -->
+		
+	</select>
+	<insert id="noticeInsert" parameterType="com.jay.prj.notice.service.NoticeVO">
+		<selectKey keyProperty="noticeId" order="BEFORE" resultType="int">
+			select
+				case when max(notice_id) is null then 0
+					else max(notice_id)+1
+				end as id
+			from notice
+		</selectKey>
+		
+		insert into notice
+		values (#{noticeId}, #{noticeWriter},#{noticeTitle}, #{noticeSubject}, #{noticeDate}, 0,
+				#{noticeAttech}, #{noticeAttechDir})
+		<!-- ㄴkeyProperty를 여기에 넣는다 -->
+	</insert>
+	<update id="noticeUpdate">
+		update notice
+		<set>
+			<if test="noticeWriter != null">notice_writer = #{noticeWriter},</if>
+			<if test="noticeTitle != null">notice_title = #{noticeTitle},</if>
+			<if test="noticeSubject != null">notice_subject = #{noticeSubject},</if>
+			<if test="noticeDate != null">notice_date = #{noticeDate}</if>
+			<if test="noticeAttech != null">notice_attech = #{noticeAttech},</if>
+			<if test="noticeAttechDir != null">notice_attech_dir = #{noticeAttechDir}</if>
+		</set>
+		where notice_id = #{noticeId}
+	</update>
+	<delete id="noticeDelete">
+	
+	</delete>
+	<select id="noticeSearch" resultType="com.jay.prj.notice.service.NoticeVO">
+		select * from notice
+		where
+		<choose>
+			<when test="key==1">notice_title like'%'|| #{val} ||'%'</when>
+			<when test="key==2">notice_subject like'%'|| #{val} ||'%'</when>
+			<when test="key==3">notice_writer like'%'|| #{val} ||'%'</when>
+		</choose>
+	</select>
+	
+</mapper>
