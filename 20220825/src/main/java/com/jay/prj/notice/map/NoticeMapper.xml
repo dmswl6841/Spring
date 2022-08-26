@@ -65,4 +65,7 @@
 		</choose>
 	</select>
 	
+	<update id="noticeHitUpdate">
+		UPDATE NOTICE SET NOTICE_HIT = NOTICE_HIT +1 WHERE NOTICE_ID = #{noticeId}
+	</update>
 </mapper>

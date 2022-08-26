@@ -17,7 +17,7 @@ public interface NoticeMapper {
 	int noticeInsert(NoticeVO vo);
 	int noticeUpdate(NoticeVO vo);
 	int noticeDelete(NoticeVO vo);
-	
+	int noticeHitUpdate(NoticeVO vo);
 	List<NoticeVO> noticeSearch(@Param("key") String key, @Param("val") String val);
 	//*****mapper interface에서만!!!!***** 전달인자가 두개 이상의 값이 넘어오면 @param을 해줘야한다. 그래야 구분할 수 있음.
 }

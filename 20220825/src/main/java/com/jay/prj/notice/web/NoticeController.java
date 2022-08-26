@@ -31,6 +31,7 @@ public class NoticeController {
 	@RequestMapping("/noticeSelect.do")
 	public String noticeSelect(NoticeVO vo ,Model model) {
 		model.addAttribute("n", ns.noticeSelect(vo));
+		ns.noticeHitUpdate(vo);
 		return "notice/noticeSelect";
 	}
 	
@@ -66,8 +67,6 @@ public class NoticeController {
 	
 	@RequestMapping("/noticeSearch.do")
 	public String noticeSearch(NoticeVO vo, String key, String val, Model model)  {
-		key="3";
-		val="hi";
 		model.addAttribute("notices",ns.noticeSearch(key, val));
 		return "notice/noticeSearch";
 	}
@@ -88,4 +87,6 @@ public class NoticeController {
 	public String ajaxTest() {
 		return "notice/ajaxTest";
 	}
+	
+	
 }

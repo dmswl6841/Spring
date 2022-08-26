@@ -14,6 +14,7 @@
 		const xhttp = new XMLHttpRequest();
 		xhttp.onload = function(){
 			document.getElementById("demo").innerHTML = xhttp.responseText;
+			console.log(this.response);
 		}
 		xhttp.open("GET", "ajaxNoticeSelect.do", true);
 		xhttp.send();

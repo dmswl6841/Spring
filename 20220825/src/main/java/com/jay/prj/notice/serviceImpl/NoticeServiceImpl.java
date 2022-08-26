@@ -12,9 +12,15 @@ import com.jay.prj.notice.service.NoticeVO;
 
 @Service
 public class NoticeServiceImpl implements NoticeService{
+
 	@Autowired
 	private NoticeMapper map;
 
+	@Override
+	public int noticeHitUpdate(NoticeVO vo) {
+		return map.noticeHitUpdate(vo);
+	}
+	
 	@Override
 	public List<Map<String, Object>> noticeSelectList() {
 		return map.noticeSelectList();
